@@ -70,7 +70,7 @@ Game.prototype.handleWar = function(pot) {
         }
         cardA = this.HandX.shift();
     };
-    if (this.handB.length < 4) {
+    if (this.HandY.length < 4) {
         cardB = this.handY.shift();
         pot = pot.concat(this.HandY);
         this.HandY = [];
@@ -122,3 +122,17 @@ this.printState(cardA, cardB, pot); {
         return true;
     }
 };
+Game.prototype.mainLoop = function() {
+    var cardA = this.HandX.shift();
+    var cardB = this.HandY.shift();
+
+    return this.determineWinner(cardA, cardB);
+};
+
+var gameInstance = new Game();
+var lock = true;
+while (lock) {
+    lock = gameInstance.mainLoop();
+}
+console.log(gameInstance.HandX);
+console.log(gameInstance.HandY);
