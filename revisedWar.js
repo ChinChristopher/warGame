@@ -9,10 +9,10 @@ var Player2 = new Player("Player 2");
 Deck.StartGame(Player1, Player2);
 
 function GameLogic(player1, player2) {
-    if ((player1.wonDeck.length === 0) && (player1.currentDeck.length === 0)) {
+    if (player1.currentDeck.length === 0) {
         player1.GameOver(player2);
         Player1Wins(player1);
-    } else if ((player2.wonDeck.length === 0) && (player2.currentDeck.length === 0)) {
+    } else if (player2.currentDeck.length === 0) {
         player2.GameOver(player1);
         Player2Wins(player2);
     } else {
